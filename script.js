@@ -10,8 +10,8 @@ function addCard(title, text, link) {
   title_text.innerHTML = title;
   title_text.classList.add("mdl-card__title-text");
   
-  title.appendChild(title_text);
-  card.appendChild(title);
+  title_e.appendChild(title_text);
+  card.appendChild(title_e);
   
   const sup_text = document.createElement("div");
   sup_text.classList.add("mdl-card__supporting-text");
