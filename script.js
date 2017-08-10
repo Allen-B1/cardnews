@@ -21,3 +21,11 @@ function addCard(title, text, link) {
   body.appendChild(card);
 }
      
+const xhr = new XMLHttpRequest();
+xhr.onload = function() {
+  var doc = xhr.responseXML;
+  var items = doc.getElementsByTagName("item");
+  console.log(item);
+};
+xhr.open("GET", "https://news.google.com/news?output=rss");
+xhr.send();
