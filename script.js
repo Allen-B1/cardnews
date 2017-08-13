@@ -23,9 +23,10 @@ function addCard(title, text, link) {
      
 const xhr = new XMLHttpRequest();
 xhr.onload = function() {
-  var doc = xhr.responseXML;
-  var items = doc.getElementsByTagName("item");
-  console.log(item);
+  var doc = JSON.parse(xhr.responseText);
+  for(var i = 0; i < doc.articles.length; i++) {
+    addCard(doc.articles[i].title, doc.articles[i].description);
+  }
 };
 xhr.open("GET", "https://news.google.com/news?output=rss");
 xhr.send();
