@@ -5,5 +5,7 @@
   "background_color": "#eee",
   
   "name": "Cardstock",
-  "short_name": "Cardstock"
+  "short_name": "Cardstock",
+  
+  "description": "Browse the news"
 }
