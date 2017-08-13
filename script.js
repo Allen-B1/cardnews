@@ -28,5 +28,5 @@ xhr.onload = function() {
     addCard(doc.articles[i].title, doc.articles[i].description);
   }
 };
-xhr.open("GET", "https://news.google.com/news?output=rss");
+xhr.open("GET", "https://newsapi.org/v1/articles?apiKey=06fbd7c470bb4580b930d28a9934fa45&source=google-news");
 xhr.send();
