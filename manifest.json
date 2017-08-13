@@ -1,0 +1,9 @@
+{
+  "display": "standalone",
+  
+  "theme_color": "#03a9f4",
+  "background_color": "#eee",
+  
+  "name": "Cardstock",
+  "short_name": "Cardstock"
+}
