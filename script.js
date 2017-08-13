@@ -23,7 +23,7 @@ function addCard(title, text, link) {
   card.appendChild(menu);
   
   const menu_btn = document.createElement("a");
-  menu_btn.classList.add("mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect");
+  menu_btn.classList.add("mdl-button", "mdl-button--colored", "mdl-js-button", "mdl-js-ripple-effect");
   menu_btn.innerHTML = "More";
   menu_btn.href = link;
   menu.appendChild(menu_btn);
