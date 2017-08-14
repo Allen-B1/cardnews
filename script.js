@@ -70,6 +70,7 @@ function test_int() {
       for(let i = 0; i < doc.sources.length; i++)
         test_int.news.push(doc.sources[i].id);
       localStorage.setItem("news", JSON.stringify(test_int.news));
+      location.reload();
     };
     xhr.open("GET", "https://newsapi.org/v1/sources?language=en&category=" + int);
     xhr.send();
