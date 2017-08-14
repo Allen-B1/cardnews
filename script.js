@@ -46,4 +46,33 @@ function getNews(src) {
   xhr.open("GET", "https://newsapi.org/v1/articles?apiKey=06fbd7c470bb4580b930d28a9934fa45&source=" + src);
   xhr.send();
 }
-getNews("google-news");
+
+function test_int() {
+  var int = prompt("What are you interested in? Technology, sports, everything, etc.");
+  if(int) {
+    int = int.toLowerCase();
+    if(int === "sports") int = "sport";
+    if(int === "tech") int = "technology";
+    if(int === "everything") int = "general";
+    if(int === "general") {
+      test_int.news = "google-news";
+      localStorage.setItem("news", test_int.news);
+      return;
+    }
+    
+    const xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+      var doc = JSON.parse(xhr.responseText);
+      if(doc.status !== "ok" || doc.sources.length === 0) return;
+      test_int.news = doc.sources[doc.sources.length];
+      localStorage.setItem("news", test_int.news);
+    };
+    xhr.open("GET", "https://newsapi.org/v1/sources?language=en&category=" + src);
+    xhr.send();
+  }
+  
+}
+test_int.news = localStorage.getItem("news") || "google-news";
+
+
+getNews(test_int.news);
