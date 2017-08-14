@@ -1,1 +1,14 @@
-
+.mdl-layout__content {
+  background: #EEE;
+}
+.page-content {
+  padding: 8px;
+}
+.page-content .mdl-card {
+  display: block;
+  width: auto;
+  height: auto;
+  min-height: 0;
+  margin: 8px;
+}
+#page-content-1, #page-content-2 { width: 48%; display: inline-block; }
