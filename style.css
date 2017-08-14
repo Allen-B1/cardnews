@@ -11,7 +11,8 @@
   min-height: 0;
   margin: 8px;
 }
-#page-content-1, #page-content-2 { width: 50%; display: inline-block; vertical-align: top; }
+#page-content-1, #page-content-2 { width: 50%; display: inline-block; vertical-align: top; 
+  white-space: nowrap; }
 @media screen and (max-width: 800px) {
   #page-content-1, #page-content-2 {
     display: block;
