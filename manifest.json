@@ -7,5 +7,11 @@
   "name": "Cardnews",
   "short_name": "Cardnews",
   
-  "description": "Browse the news"
+  "description": "Browse the news",
+  
+  "icons": [{
+    "src": "icon-192x192.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  }]
 } 
