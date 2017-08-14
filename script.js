@@ -67,7 +67,7 @@ function test_int() {
       test_int.news = doc.sources[doc.sources.length];
       localStorage.setItem("news", test_int.news);
     };
-    xhr.open("GET", "https://newsapi.org/v1/sources?language=en&category=" + src);
+    xhr.open("GET", "https://newsapi.org/v1/sources?language=en&category=" + int);
     xhr.send();
   }
   
