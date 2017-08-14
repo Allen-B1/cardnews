@@ -1,5 +1,5 @@
 function addCard(title, text, link) {
-  const body = document.getElementById("page-content-" + (Math.round(Math.random()) + 1));
+  const body = document.getElementById("page-content-" + (addCard.side + 1));
   const card = document.createElement("div");
   card.classList.add("mdl-card", "mdl-shadow--2dp");
   
@@ -30,7 +30,10 @@ function addCard(title, text, link) {
   menu.appendChild(menu_btn);
   
   body.appendChild(card);
+  
+  addCard.side = !addCard.side;
 }
+addCard.side = false;
 
 function getNews(src) {
   const xhr = new XMLHttpRequest();
