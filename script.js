@@ -58,7 +58,7 @@ function test_int() {
     if(int === "everything") int = "general";
     if(int === "general") {
       test_int.news = ["google-news"];
-      localStorage.setItem("news", test_int.news);
+      localStorage.setItem("news", JSON.stringify(test_int.news));
       return;
     }
     
@@ -69,12 +69,12 @@ function test_int() {
       test_int.news = [];
       for(let i = 0; i < doc.sources.length; i++)
         test_int.news.push(doc.sources[i].id);
-      localStorage.setItem("news", test_int.news);
+      localStorage.setItem("news", JSON.stringify(test_int.news));
     };
     xhr.open("GET", "https://newsapi.org/v1/sources?language=en&category=" + int);
     xhr.send();
   }
 }
-test_int.news = localStorage.getItem("news") || ["google-news"];
+test_int.news = JSON.parse(localStorage.getItem("news")) || ["google-news"];
 
 getNews(test_int.news);
