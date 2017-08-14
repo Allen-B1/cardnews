@@ -75,6 +75,11 @@ function test_int() {
     xhr.send();
   }
 }
-test_int.news = JSON.parse(localStorage.getItem("news")) || ["google-news"];
+
+try {
+  test_int.news = JSON.parse(localStorage.getItem("news")) || ["google-news"];
+} catch(err) {
+  test_int.news = ["google-news"];
+}
 
 getNews(test_int.news);
