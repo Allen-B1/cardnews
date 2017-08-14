@@ -36,15 +36,17 @@ function addCard(title, text, link) {
 addCard.side = false;
 
 function getNews(src) {
-  const xhr = new XMLHttpRequest();
-  xhr.onload = function() {
-    var doc = JSON.parse(xhr.responseText);
-    for(var i = 0; i < doc.articles.length; i++) {
-      addCard(doc.articles[i].title, doc.articles[i].description, doc.articles[i].url);
-    }
-  };
-  xhr.open("GET", "https://newsapi.org/v1/articles?apiKey=06fbd7c470bb4580b930d28a9934fa45&source=" + src);
-  xhr.send();
+  for(let i = 0; i < src.length; i++) {
+    const xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+      var doc = JSON.parse(xhr.responseText);
+      for(var i = 0; i < doc.articles.length; i++) {
+        addCard(doc.articles[i].title, doc.articles[i].description, doc.articles[i].url);
+      }
+    };
+    xhr.open("GET", "https://newsapi.org/v1/articles?apiKey=06fbd7c470bb4580b930d28a9934fa45&source=" + src[i]);
+    xhr.send();
+  }
 }
 
 function test_int() {
@@ -55,7 +57,7 @@ function test_int() {
     if(int === "tech") int = "technology";
     if(int === "everything") int = "general";
     if(int === "general") {
-      test_int.news = "google-news";
+      test_int.news = ["google-news"];
       localStorage.setItem("news", test_int.news);
       return;
     }
@@ -64,15 +66,15 @@ function test_int() {
     xhr.onload = function() {
       var doc = JSON.parse(xhr.responseText);
       if(doc.status !== "ok" || doc.sources.length === 0) return;
-      test_int.news = doc.sources[doc.sources.length -1].id;
+      test_int.news = [];
+      for(let i = 0; i < doc.sources.length; i++)
+        test_int.news.push(doc.sources[i].id);
       localStorage.setItem("news", test_int.news);
     };
     xhr.open("GET", "https://newsapi.org/v1/sources?language=en&category=" + int);
     xhr.send();
   }
-  
 }
-test_int.news = localStorage.getItem("news") || "google-news";
-
+test_int.news = localStorage.getItem("news") || ["google-news"];
 
 getNews(test_int.news);
