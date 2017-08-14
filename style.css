@@ -1,7 +1,7 @@
 .mdl-layout__content {
   background: #EEE;
 }
-.page-content :not(.mdl-card) {
+.page-content {
   padding: 8px;
   white-space: nowrap;
 }
@@ -11,6 +11,7 @@
   height: auto;
   min-height: 0;
   margin: 8px;
+  white-space: normal;
 }
 #page-content-1, #page-content-2 { width: 50%; display: inline-block; vertical-align: top;  }
 @media screen and (max-width: 800px) {
