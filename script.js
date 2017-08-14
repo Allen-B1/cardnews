@@ -31,13 +31,16 @@ function addCard(title, text, link) {
   
   body.appendChild(card);
 }
-     
-const xhr = new XMLHttpRequest();
-xhr.onload = function() {
-  var doc = JSON.parse(xhr.responseText);
-  for(var i = 0; i < doc.articles.length; i++) {
-    addCard(doc.articles[i].title, doc.articles[i].description, doc.articles[i].url);
-  }
-};
-xhr.open("GET", "https://newsapi.org/v1/articles?apiKey=06fbd7c470bb4580b930d28a9934fa45&source=google-news");
-xhr.send();
+
+function getNews(src) {
+  const xhr = new XMLHttpRequest();
+  xhr.onload = function() {
+    var doc = JSON.parse(xhr.responseText);
+    for(var i = 0; i < doc.articles.length; i++) {
+      addCard(doc.articles[i].title, doc.articles[i].description, doc.articles[i].url);
+    }
+  };
+  xhr.open("GET", "https://newsapi.org/v1/articles?apiKey=06fbd7c470bb4580b930d28a9934fa45&source=" + src);
+  xhr.send();
+}
+getNews("google-news");
