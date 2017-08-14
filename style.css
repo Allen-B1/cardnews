@@ -1,7 +1,7 @@
 .mdl-layout__content {
   background: #EEE;
 }
-.page-content {
+.page-content :not(.mdl-card) {
   padding: 8px;
   white-space: nowrap;
 }
