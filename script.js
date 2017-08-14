@@ -64,7 +64,7 @@ function test_int() {
     xhr.onload = function() {
       var doc = JSON.parse(xhr.responseText);
       if(doc.status !== "ok" || doc.sources.length === 0) return;
-      test_int.news = doc.sources[doc.sources.length -1];
+      test_int.news = doc.sources[doc.sources.length -1].id;
       localStorage.setItem("news", test_int.news);
     };
     xhr.open("GET", "https://newsapi.org/v1/sources?language=en&category=" + int);
