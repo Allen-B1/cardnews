@@ -1,5 +1,5 @@
 function addCard(title, text, link) {
-  const body = document.getElementsByClassName("page-content")[0];
+  const body = document.getElementById("page-content-" + (Math.round(Math.random()) + 1));
   const card = document.createElement("div");
   card.classList.add("mdl-card", "mdl-shadow--2dp");
   
