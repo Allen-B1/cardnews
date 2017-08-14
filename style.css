@@ -3,6 +3,7 @@
 }
 .page-content {
   padding: 8px;
+  white-space: nowrap;
 }
 .page-content .mdl-card {
   display: block;
@@ -11,8 +12,7 @@
   min-height: 0;
   margin: 8px;
 }
-#page-content-1, #page-content-2 { width: 50%; display: inline-block; vertical-align: top; 
-  white-space: nowrap; }
+#page-content-1, #page-content-2 { width: 50%; display: inline-block; vertical-align: top;  }
 @media screen and (max-width: 800px) {
   #page-content-1, #page-content-2 {
     display: block;
