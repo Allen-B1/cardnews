@@ -11,4 +11,10 @@
   min-height: 0;
   margin: 8px;
 }
-#page-content-1, #page-content-2 { width: 48%; display: inline-block; }
+#page-content-1, #page-content-2 { width: 48%; display: inline-block; vertical-align: top; }
+@media screen and (max-width: 720px) {
+  #page-content-1, #page-content-2 {
+    display: block;
+    width: auto;
+  }
+}
