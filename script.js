@@ -12,7 +12,7 @@ function addCard(title, text, link, src) {
   title_e.classList.add("mdl-card__title");
   
   const title_text = document.createElement("h2");
-  title_text.appendChild(document.createTextNode(title));
+  title_text.innerHTML = title.replace(/(\n|\r)/g, "<br>");
   title_text.classList.add("mdl-card__title-text");
   
   title_e.appendChild(title_text);
@@ -20,7 +20,7 @@ function addCard(title, text, link, src) {
   
   const sup_text = document.createElement("div");
   sup_text.classList.add("mdl-card__supporting-text");
-  sup_text.appendChild(document.createTextNode(text));
+  sup_text.innerHTML = text.replace(/(\n|\r)/g, "<br>");
   card.appendChild(sup_text);
   
   const menu = document.createElement("div");
