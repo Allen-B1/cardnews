@@ -1,11 +1,11 @@
-function addCard(title, text, link, src) {
+function addCard(title, text, link, src, date) {
   const body = document.getElementById("page-content-" + (addCard.side + 1));
   const card = document.createElement("div");
   card.classList.add("mdl-card", "mdl-shadow--2dp");
   
   const src_e = document.createElement("div");
   src_e.classList.add("mdl-card__supporting-text", "mdl-card--border");
-  src_e.appendChild(document.createTextNode(src));
+  src_e.appendChild(document.createTextNode(src + " | " + (date.getMonth() + 1) + "/" + date.getDate()));
   card.appendChild(src_e);
   
   const title_e = document.createElement("div");
@@ -48,7 +48,7 @@ function getNews(src) {
     xhr.onload = function() {
       var doc = JSON.parse(xhr.responseText);
       for(var j = 0; j < doc.articles.length; j++) {
-        addCard(doc.articles[j].title, doc.articles[j].description, doc.articles[j].url, src[i].name);
+        addCard(doc.articles[j].title, doc.articles[j].description, doc.articles[j].url, src[i].name, new Date(doc.articles[j].publishedAt));
       }
     };
     xhr.open("GET", "https://newsapi.org/v1/articles?apiKey=06fbd7c470bb4580b930d28a9934fa45&source=" + src[i].id);
