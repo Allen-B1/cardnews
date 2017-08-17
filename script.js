@@ -12,7 +12,7 @@ function addCard(title, text, link, src, date) {
   title_e.classList.add("mdl-card__title");
   
   const title_text = document.createElement("h2");
-  title_text.innerHTML = title.replace(/(\n|\r)/g, "<br>");
+  title_text.innerHTML = title.replace(/(\n)/g, "<br>");
   title_text.classList.add("mdl-card__title-text");
   
   title_e.appendChild(title_text);
@@ -21,7 +21,7 @@ function addCard(title, text, link, src, date) {
   if(text) {
     const sup_text = document.createElement("div");
     sup_text.classList.add("mdl-card__supporting-text");
-    sup_text.innerHTML = text.replace(/(\n|\r)/g, "<br>");
+    sup_text.innerHTML = text.replace(/(\n)/g, "<br>");
     card.appendChild(sup_text);
   }
   
