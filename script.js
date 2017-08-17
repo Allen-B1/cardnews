@@ -18,10 +18,12 @@ function addCard(title, text, link, src) {
   title_e.appendChild(title_text);
   card.appendChild(title_e);
   
-  const sup_text = document.createElement("div");
-  sup_text.classList.add("mdl-card__supporting-text");
-  sup_text.innerHTML = text.replace(/(\n|\r)/g, "<br>");
-  card.appendChild(sup_text);
+  if(text) {
+    const sup_text = document.createElement("div");
+    sup_text.classList.add("mdl-card__supporting-text");
+    sup_text.innerHTML = text.replace(/(\n|\r)/g, "<br>");
+    card.appendChild(sup_text);
+  }
   
   const menu = document.createElement("div");
   menu.classList.add("mdl-card__actions", "mdl-card--border");
