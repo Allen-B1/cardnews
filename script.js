@@ -1,7 +1,12 @@
-function addCard(title, text, link) {
+function addCard(title, text, link, src) {
   const body = document.getElementById("page-content-" + (addCard.side + 1));
   const card = document.createElement("div");
   card.classList.add("mdl-card", "mdl-shadow--2dp");
+  
+  const src_e = document.createElement("div");
+  src_e.classList.add("mdl-card__supporting-text", "mdl-card--border");
+  src_e.innerHTML = src;
+  card.appendChild(src_e);
   
   const title_e = document.createElement("div");
   title_e.classList.add("mdl-card__title");
@@ -40,11 +45,11 @@ function getNews(src) {
     const xhr = new XMLHttpRequest();
     xhr.onload = function() {
       var doc = JSON.parse(xhr.responseText);
-      for(var i = 0; i < doc.articles.length; i++) {
-        addCard(doc.articles[i].title, doc.articles[i].description, doc.articles[i].url);
+      for(var j = 0; j < doc.articles.length; j++) {
+        addCard(doc.articles[j].title, doc.articles[j].description, doc.articles[j].url, src[i].name);
       }
     };
-    xhr.open("GET", "https://newsapi.org/v1/articles?apiKey=06fbd7c470bb4580b930d28a9934fa45&source=" + src[i]);
+    xhr.open("GET", "https://newsapi.org/v1/articles?apiKey=06fbd7c470bb4580b930d28a9934fa45&source=" + src[i].id);
     xhr.send();
   }
 }
@@ -68,7 +73,7 @@ function test_int() {
       if(doc.status !== "ok" || doc.sources.length === 0) return;
       test_int.news = [];
       for(let i = 0; i < doc.sources.length; i++)
-        test_int.news.push(doc.sources[i].id);
+        test_int.news.push(doc.sources[i]);
       localStorage.setItem("news", JSON.stringify(test_int.news));
       location.reload();
     };
@@ -78,9 +83,9 @@ function test_int() {
 }
 
 try {
-  test_int.news = JSON.parse(localStorage.getItem("news")) || ["google-news"];
+  test_int.news = JSON.parse(localStorage.getItem("news")) || [{id:"google-news",name:"Google News"}];
 } catch(err) {
-  test_int.news = ["google-news"];
+  test_int.news = [{id:"google-news",name:"Google News"}];
 }
 
 getNews(test_int.news);
